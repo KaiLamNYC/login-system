@@ -1,124 +1,146 @@
-import Image from "next/image";
-import React from "react";
+"use client";
+import * as React from "react";
 
-export default function LoginPage() {
+import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+import {
+	Form,
+	FormControl,
+	FormDescription,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+
+import { Icons } from "@/components/icons";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
+
+export default function LogInPage() {
+	const form = useForm();
+	function onSubmit(values) {
+		// Do something with the form values.
+		// ✅ This will be type-safe and validated.
+		console.log(values);
+	}
+
 	return (
-		<div className='bg-[#fcfcff] flex flex-row justify-center w-full'>
-			<div className='bg-bgwhite overflow-hidden w-[1728px] h-[1102px]'>
-				<div className='relative h-[1103px]'>
-					<div className='absolute w-[1728px] h-[1103px] top-0 left-0'>
-						{/* <Image
-							className='w-[872px] h-[530px] top-0 left-0 absolute object-cover'
-							alt='Image'
-							src='image-7.png'
-						/>
-						<Image
-							className='w-[856px] h-[530px] top-0 left-[872px] absolute object-cover'
-							alt='Image'
-							src='image-8.png'
-						/>
-						<Image
-							className='w-[864px] h-[529px] top-[573px] left-0 absolute object-cover'
-							alt='Image'
-							src='image-9.png'
-						/>
-						<Image
-							className='w-[864px] h-[529px] top-[573px] left-[864px] absolute object-cover'
-							alt='Image'
-							src='image-10.png'
-						/> */}
+		<div className='flex justify-center items-center h-screen '>
+			<Card className='max-w-full w-3/4'>
+				<div className='flex items-center gap-8'>
+					<div className='max-w-full w-1/2'>
+						<CardHeader className='mb-24'>
+							<div className='flex flex-col items-center'>
+								<Image
+									src='/logo4.svg'
+									alt='logo'
+									height={50}
+									width={160}
+									className='mb-4'
+								/>
+								<CardTitle>Welcome!</CardTitle>
+							</div>
+
+							<div className='flex items-center'>
+								<Separator className='w-36' />
+
+								<CardDescription>Login To Your Account</CardDescription>
+								<Separator className='w-36' />
+							</div>
+						</CardHeader>
+						<CardContent>
+							<Form {...form}>
+								<form
+									onSubmit={form.handleSubmit(onSubmit)}
+									className='space-y-4'
+								>
+									<FormField
+										control={form.control}
+										name='emailId'
+										render={({ field }) => (
+											<FormItem>
+												{/* <FormLabel>Username</FormLabel> */}
+												<FormControl>
+													<Input placeholder='Email-id' {...field} />
+												</FormControl>
+												{/* <FormDescription>
+												This is your public display name.
+											</FormDescription> */}
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									<FormField
+										control={form.control}
+										name='password'
+										render={({ field }) => (
+											<FormItem>
+												{/* <FormLabel>Username</FormLabel> */}
+												<FormControl>
+													<Input placeholder='Password' {...field} />
+												</FormControl>
+												{/* <FormDescription>
+												This is your public display name.
+											</FormDescription> */}
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+
+									<Button type='submit' className='w-full'>
+										LOGIN
+									</Button>
+								</form>
+							</Form>
+						</CardContent>
+						<CardFooter className='flex flex-col'>
+							<p className='text-sm mb-2'>OR</p>
+							<div className='grid grid-cols-2 gap-4 mb-2'>
+								<Button variant='outline'>
+									<Icons.google className='mr-2 h-4 w-4' />
+									Google
+								</Button>
+								<Button variant='outline'>
+									<Icons.gitHub className='mr-2 h-4 w-4' />
+									Github
+								</Button>
+							</div>
+							<p className='text-sm mb-2'>
+								Dont have an Account? <Link href='/'>SIGN UP</Link>
+							</p>
+						</CardFooter>
 					</div>
-					<div className='absolute w-[1728px] h-[1102px] top-0 left-0 bg-[#c2dafbe6]' />
-					<div className='absolute w-[1114px] h-[800px] top-[151px] left-[307px] bg-white rounded-[0px_35px_35px_35px]' />
-					{/* <Image
-						className='absolute w-[160px] h-[47px] top-[183px] left-[512px] object-cover'
-						alt='Logo'
-						src='logo-4.png'
-					/>
+					<Separator className='w-[1px] h-[400px]' orientation='vertical' />
 					<Image
-						className='w-px h-[603px] top-[252px] left-[882px] absolute object-cover'
-						alt='Line'
-						src='line-47.svg'
-					/> */}
-					<div className="absolute w-[99px] top-[256px] left-[542px] [font-family:'Nunito-Bold',Helvetica] font-bold text-black text-[32px] text-center tracking-[0] leading-[48px] whitespace-nowrap">
-						Hello!
-					</div>
-					<div className="absolute w-[152px] top-[309px] left-[516px] [font-family:'Nunito-Bold',Helvetica] font-bold text-[#00002280] text-[14px] text-center tracking-[0] leading-[21px] whitespace-nowrap">
-						Create Your Account
-					</div>
-					<div className='absolute w-[450px] h-[45px] top-[360px] left-[367px] bg-white rounded-[5px] border border-solid border-[#c0c0c0]' />
-					{/* <Image
-						className='w-[150px] h-px top-[324px] left-[368px] absolute object-cover'
-						alt='Line'
-						src='line-48.svg'
+						src='/bro.svg'
+						alt='bro'
+						height={326}
+						width={500}
+						className='mr-6'
 					/>
-					<Image
-						className='w-[150px] h-px top-[324px] left-[668px] absolute object-cover'
-						alt='Line'
-						src='line-49.svg'
-					/> */}
-					<div className="absolute w-[74px] top-[372px] left-[400px] [font-family:'Nunito-SemiBold',Helvetica] font-semibold text-[#00002280] text-[14px] tracking-[0] leading-[21px] whitespace-nowrap">
-						First Name
-					</div>
-					<div className='absolute w-[205px] h-[45px] top-[815px] left-[368px] bg-white rounded-[5px] border border-solid border-[#c0c0c0]' />
-					<div className="left-[384px] absolute w-[142px] top-[827px] [font-family:'Nunito-SemiBold',Helvetica] font-semibold text-[#00002280] text-[14px] tracking-[0] leading-[21px] whitespace-nowrap">
-						Sign Up With Google
-					</div>
-					<div className='absolute w-[450px] h-[45px] top-[429px] left-[367px] bg-white rounded-[5px] border border-solid border-[#c0c0c0]' />
-					<div className="absolute w-[74px] top-[441px] left-[399px] [font-family:'Nunito-SemiBold',Helvetica] font-semibold text-[#00002280] text-[14px] tracking-[0] leading-[21px] whitespace-nowrap">
-						Last Name
-					</div>
-					<div className='absolute w-[450px] h-[46px] top-[497px] left-[367px] bg-white rounded-[5px] border border-solid border-[#c0c0c0]' />
-					{/* <Image
-						className='absolute w-[538px] h-[144px] top-[807px] left-[883px]'
-						alt='Vector'
-						src='vector.svg'
-					/> */}
-					<div className="absolute w-[74px] top-[510px] left-[400px] [font-family:'Nunito-SemiBold',Helvetica] font-semibold text-[#00002280] text-[14px] tracking-[0] leading-[21px] whitespace-nowrap">
-						Email-id
-					</div>
-					<div className='absolute w-[450px] h-[45px] top-[566px] left-[367px] bg-white rounded-[5px] border border-solid border-[#c0c0c0]' />
-					<div className="absolute w-[74px] top-[578px] left-[399px] [font-family:'Nunito-SemiBold',Helvetica] font-semibold text-[#00002280] text-[14px] tracking-[0] leading-[21px] whitespace-nowrap">
-						Password
-					</div>
-					<div className='absolute w-[450px] h-[45px] top-[635px] left-[367px] bg-white rounded-[5px] border border-solid border-[#c0c0c0]' />
-					<div className="absolute w-[117px] top-[647px] left-[399px] [font-family:'Nunito-SemiBold',Helvetica] font-semibold text-[#00002280] text-[14px] tracking-[0] leading-[21px] whitespace-nowrap">
-						Confirm Password
-					</div>
-					<div className='absolute w-[450px] h-[45px] top-[703px] left-[368px] bg-[#1f64ff] rounded-[5px] border border-solid border-[#c0c0c0]' />
-					<div className="absolute w-[117px] top-[715px] left-[537px] [font-family:'Nunito-Bold',Helvetica] font-bold text-white text-[16px] text-center tracking-[0] leading-[24px] whitespace-nowrap">
-						Sign Up
-					</div>
-					<p className="absolute w-[224px] top-[887px] left-[480px] [font-family:'Nunito-Regular',Helvetica] font-normal text-transparent text-[14px] tracking-[0] leading-[21px] whitespace-nowrap">
-						<span className='text-[#00002280]'>Already have an Account ? </span>
-						<span className="[font-family:'Nunito-Medium',Helvetica] font-medium text-[#1f64ff]">
-							LOGIN{" "}
-						</span>
-					</p>
-					<div className="absolute w-[29px] top-[771px] left-[577px] [font-family:'Nunito-ExtraBold',Helvetica] font-extrabold text-[#00002280] text-[14px] text-center tracking-[0] leading-[21px] whitespace-nowrap">
-						Or
-					</div>
-					{/* <Image
-						className='w-[32px] h-[30px] top-[823px] left-[529px] absolute object-cover'
-						alt='Image'
-						src='image-1.png'
-					/> */}
-					<div className='absolute w-[205px] h-[45px] top-[815px] left-[612px] bg-white rounded-[5px] border border-solid border-[#c0c0c0]' />
-					<div className="left-[628px] absolute w-[142px] top-[827px] [font-family:'Nunito-SemiBold',Helvetica] font-semibold text-[#00002280] text-[14px] tracking-[0] leading-[21px] whitespace-nowrap">
-						Sign Up With Github
-					</div>
-					{/* <Image
-						className='w-[40px] h-[37px] top-[820px] left-[768px] absolute object-cover'
-						alt='Image'
-						src='image-2.png'
-					/>
-					<Image
-						className='absolute w-[500px] h-[326px] top-[375px] left-[892px]'
-						alt='Digital'
-						src='bro.png'
-					/> */}
 				</div>
-			</div>
+			</Card>
 		</div>
 	);
 }
