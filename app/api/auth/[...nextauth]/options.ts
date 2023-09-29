@@ -13,12 +13,12 @@ export const options: NextAuthOptions = {
 			name: "Credentials",
 			credentials: {
 				emailId: {
-					label: "EmailId",
+					label: "EmailId:",
 					type: "text",
 					placeholder: "email-id",
 				},
 				password: {
-					label: "Password",
+					label: "Password:",
 					type: "password",
 				},
 			},
@@ -41,4 +41,9 @@ export const options: NextAuthOptions = {
 			},
 		}),
 	],
+	//SETTING CUSTOM PAGES FOR ONBOARDING AND LOGIN FOR PROTECTED ROUTES
+	pages: {
+		signIn: "/login",
+		newUser: "/onboarding",
+	},
 };
