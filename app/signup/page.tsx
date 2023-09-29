@@ -21,13 +21,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
+
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -37,7 +31,7 @@ import { Icons } from "@/components/icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 
-export default function LogInPage() {
+export default function SignUpPage() {
 	const form = useForm();
 	function onSubmit(values) {
 		// Do something with the form values.
@@ -50,7 +44,7 @@ export default function LogInPage() {
 			<Card className='max-w-full w-3/4'>
 				<div className='flex items-center gap-8'>
 					<div className='max-w-full w-1/2'>
-						<CardHeader className='mb-24'>
+						<CardHeader>
 							<div className='flex flex-col items-center'>
 								<Image
 									src='/logo4.svg'
@@ -59,14 +53,14 @@ export default function LogInPage() {
 									width={160}
 									className='mb-6'
 								/>
-								<CardTitle>Welcome!</CardTitle>
+								<CardTitle>Hello!</CardTitle>
 							</div>
 
 							<div className='flex items-center'>
-								<Separator className='w-36' />
+								<Separator className='w-2/6' />
 
-								<CardDescription>Login To Your Account</CardDescription>
-								<Separator className='w-36' />
+								<CardDescription>Create Your Account</CardDescription>
+								<Separator className='w-2/6' />
 							</div>
 						</CardHeader>
 						<CardContent>
@@ -75,6 +69,38 @@ export default function LogInPage() {
 									onSubmit={form.handleSubmit(onSubmit)}
 									className='space-y-4'
 								>
+									<FormField
+										control={form.control}
+										name='firstName'
+										render={({ field }) => (
+											<FormItem>
+												{/* <FormLabel>Username</FormLabel> */}
+												<FormControl>
+													<Input placeholder='First Name' {...field} />
+												</FormControl>
+												{/* <FormDescription>
+												This is your public display name.
+											</FormDescription> */}
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									<FormField
+										control={form.control}
+										name='lastName'
+										render={({ field }) => (
+											<FormItem>
+												{/* <FormLabel>Username</FormLabel> */}
+												<FormControl>
+													<Input placeholder='Last Name' {...field} />
+												</FormControl>
+												{/* <FormDescription>
+												This is your public display name.
+											</FormDescription> */}
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
 									<FormField
 										control={form.control}
 										name='emailId'
@@ -107,9 +133,24 @@ export default function LogInPage() {
 											</FormItem>
 										)}
 									/>
-
+									<FormField
+										control={form.control}
+										name='confirmPassword'
+										render={({ field }) => (
+											<FormItem>
+												{/* <FormLabel>Username</FormLabel> */}
+												<FormControl>
+													<Input placeholder='Confirm Password' {...field} />
+												</FormControl>
+												{/* <FormDescription>
+												This is your public display name.
+											</FormDescription> */}
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
 									<Button type='submit' className='w-full'>
-										LOGIN
+										SIGN UP
 									</Button>
 								</form>
 							</Form>
@@ -127,7 +168,7 @@ export default function LogInPage() {
 								</Button>
 							</div>
 							<p className='text-sm mb-2'>
-								Dont have an Account? <Link href='/signup'>SIGN UP</Link>
+								Already have an Account? <Link href='/login'>LOGIN</Link>
 							</p>
 						</CardFooter>
 					</div>

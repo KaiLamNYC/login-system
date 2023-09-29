@@ -1,4 +1,4 @@
-import type { NextAuthOptions } from "next-auth";
+import { getServerSession, type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
@@ -46,4 +46,9 @@ export const options: NextAuthOptions = {
 		signIn: "/login",
 		newUser: "/onboarding",
 	},
+};
+
+//https://next-auth.js.org/configuration/nextjs#getserversession
+export const getAuthSession = () => {
+	return getServerSession(options);
 };
