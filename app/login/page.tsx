@@ -57,7 +57,7 @@ export default function LogInPage() {
 									alt='logo'
 									height={50}
 									width={160}
-									className='mb-4'
+									className='mb-6'
 								/>
 								<CardTitle>Welcome!</CardTitle>
 							</div>

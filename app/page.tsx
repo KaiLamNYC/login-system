@@ -21,13 +21,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
+
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -57,7 +51,7 @@ export default function Home() {
 									alt='logo'
 									height={50}
 									width={160}
-									className='mb-4'
+									className='mb-6'
 								/>
 								<CardTitle>Hello!</CardTitle>
 							</div>
