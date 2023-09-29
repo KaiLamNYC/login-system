@@ -47,27 +47,27 @@ export default function Home() {
 
 	return (
 		<div className='flex justify-center items-center h-screen '>
-			<Card className='max-w-full spa'>
-				<div className='flex items-center '>
-					<div>
+			<Card className='max-w-full w-3/4'>
+				<div className='flex items-center gap-8'>
+					<div className='max-w-full w-1/2'>
 						<CardHeader>
-							<Image src='/logo4.svg' alt='logo' height={50} width={160} />
-							<CardTitle>Hello!</CardTitle>
-
-							<Separator />
-
-							<CardDescription>Create Your Account</CardDescription>
-							{/* <div className='relative'>
-							<div className='absolute inset-0 flex items-center'>
-								<span className='w-full border-t' />
+							<div className='flex flex-col items-center'>
+								<Image
+									src='/logo4.svg'
+									alt='logo'
+									height={50}
+									width={160}
+									className='mb-4'
+								/>
+								<CardTitle>Hello!</CardTitle>
 							</div>
-							<div className='relative flex justify-center text-xs uppercase'>
-								<span className='bg-background px-2 text-muted-foreground'>
-									Or continue with
-								</span>
+
+							<div className='flex items-center'>
+								<Separator className='w-2/6' />
+
+								<CardDescription>Create Your Account</CardDescription>
+								<Separator className='w-2/6' />
 							</div>
-						</div> */}
-							{/* <Separator /> */}
 						</CardHeader>
 						<CardContent>
 							<Form {...form}>
@@ -155,7 +155,9 @@ export default function Home() {
 											</FormItem>
 										)}
 									/>
-									<Button type='submit'>SIGN UP</Button>
+									<Button type='submit' className='w-full'>
+										SIGN UP
+									</Button>
 								</form>
 							</Form>
 						</CardContent>
@@ -176,8 +178,14 @@ export default function Home() {
 							</p>
 						</CardFooter>
 					</div>
-					<Separator orientation='vertical' />
-					<Image src='/bro.svg' alt='bro' height={326} width={500} />
+					<Separator className='w-[1px] h-[400px]' orientation='vertical' />
+					<Image
+						src='/bro.svg'
+						alt='bro'
+						height={326}
+						width={500}
+						className='mr-6'
+					/>
 				</div>
 			</Card>
 		</div>
