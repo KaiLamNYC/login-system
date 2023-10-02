@@ -49,4 +49,5 @@ To run the project locally, follow these steps:
 ## Notes
 
 - **Dashboard:** Did not have enough time to complete dashboard UI but it would use a grid layout and indivdual cards for the selections with a corresponding picture.
-- **Redis:** Redis can be used along with MongoDB with cache aside to store any relevant data as the application scales
+- **Media Queries:** Also did not have time to make layout responsive but that would be done with tailwind media queries.
+- **Redis:** Redis can be used along with MongoDB with cache aside to store any relevant data as the application scales.
