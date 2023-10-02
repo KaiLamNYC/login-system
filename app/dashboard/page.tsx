@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import React, { useState } from "react";
 
 type Props = {};
@@ -13,7 +14,9 @@ type Props = {};
 const DashboardPage = (props: Props) => {
 	const { data: session } = useSession();
 	const [progress, setProgress] = useState(0);
-
+	if (!session) {
+		return redirect("/");
+	}
 	const handleStep1 = (e) => {
 		e.preventDefault();
 		setProgress(40);
