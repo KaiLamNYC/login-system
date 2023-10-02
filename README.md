@@ -51,3 +51,5 @@ To run the project locally, follow these steps:
 - **Dashboard:** Did not have enough time to complete dashboard UI but it would use a grid layout and indivdual cards for the selections with a corresponding picture.
 - **Media Queries:** Also did not have time to make layout responsive but that would be done with tailwind media queries.
 - **Redis:** Redis can be used along with MongoDB with cache aside to store any relevant data as the application scales.
+- **Confirm Password:** One more issue that can be resolved is the confirm password field validation using zod refine method to make sure the passwords are actually the same.
+- **User Model:** The User model has an onboarding boolean value that can be toggled to true after completing the onboarding process in the real application.
