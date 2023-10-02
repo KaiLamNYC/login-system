@@ -19,8 +19,33 @@ This is a simple login system project built with React, Node.js, and MongoDB. It
 
 To run the project locally, follow these steps:
 
-1. Clone the repository to your local machine:
+1. Clone this repository to your local machine.
 
-   ```bash
-   git clone https://github.com/your-username/login-system.git
+   ```sh
+   git clone https://github.com/kailamnyc/login-system.git
+
    ```
+
+2. Install the project dependencies:
+
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Configure the environment variables by creating a .env file in the project root directory. You can use .env.example as a template:
+
+4. Start the development server:
+
+   ```sh
+   npm run start
+   # or
+   yarn start
+   ```
+
+5. Open your web browser and visit http://localhost:3000 to see the app running locally.
+
+## Notes
+
+- **Test:** Users
