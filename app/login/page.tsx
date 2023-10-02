@@ -57,7 +57,7 @@ export default function LogInPage() {
 			...values,
 			redirect: false,
 		});
-		router.push("/dashboard");
+		router.push("/onboarding/1");
 	}
 
 	return (
@@ -139,9 +139,9 @@ export default function LogInPage() {
 								<Button
 									variant='outline'
 									onClick={() =>
-										signIn("google", { callbackUrl: "/dashboard" }).catch(
-											console.error
-										)
+										signIn("google", {
+											callbackUrl: "/onboarding/1",
+										}).catch(console.error)
 									}
 								>
 									<Icons.google className='mr-2 h-4 w-4' />
@@ -150,9 +150,9 @@ export default function LogInPage() {
 								<Button
 									variant='outline'
 									onClick={() =>
-										signIn("github", { callbackUrl: "/dashboard" }).catch(
-											console.error
-										)
+										signIn("github", {
+											callbackUrl: "/onboarding/1",
+										}).catch(console.error)
 									}
 								>
 									<Icons.gitHub className='mr-2 h-4 w-4' />

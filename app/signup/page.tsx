@@ -190,7 +190,7 @@ export default function SignUpPage() {
 								<Button
 									variant='outline'
 									onClick={() =>
-										signIn("google", { callbackUrl: "/dashboard" }).catch(
+										signIn("google", { callbackUrl: "/onboarding/1" }).catch(
 											console.error
 										)
 									}
@@ -201,7 +201,7 @@ export default function SignUpPage() {
 								<Button
 									variant='outline'
 									onClick={() =>
-										signIn("github", { callbackUrl: "/dashboard" }).catch(
+										signIn("github", { callbackUrl: "/onboarding/1" }).catch(
 											console.error
 										)
 									}

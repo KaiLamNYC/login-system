@@ -14,9 +14,9 @@ type Props = {};
 const DashboardPage = (props: Props) => {
 	const { data: session } = useSession();
 	const [progress, setProgress] = useState(0);
-	if (!session) {
-		return redirect("/");
-	}
+	// if (!session) {
+	// 	return redirect("/");
+	// }
 	const handleStep1 = (e) => {
 		e.preventDefault();
 		setProgress(40);
@@ -41,7 +41,7 @@ const DashboardPage = (props: Props) => {
 					<Button
 						onClick={() =>
 							signOut({
-								callbackUrl: "https://login-system-kailamnyc.vercel.app/",
+								callbackUrl: "/",
 							})
 						}
 					>
