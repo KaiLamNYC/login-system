@@ -63,8 +63,7 @@ export const options: NextAuthOptions = {
 	secret: process.env.NEXTAUTH_SECRET,
 	callbacks: {
 		async jwt({ token, user, session }) {
-			console.log({ token, user, session });
-
+			//PASSING IN FIRSTNAME AND ONBOARDING TO TOKEN
 			if (user) {
 				return {
 					...token,
@@ -75,9 +74,17 @@ export const options: NextAuthOptions = {
 			return token;
 		},
 		async session({ session, token, user }) {
-			console.log({ session, token, user });
+			//PASSING ONBOARDED AND FIRSTNAME TO SESSION
+			return {
+				...session,
+				user: {
+					...session.user,
+					onboarded: token.onboarded,
+					firstName: token.firstName,
+				},
+			};
 
-			return session;
+			// return session;
 		},
 	},
 };

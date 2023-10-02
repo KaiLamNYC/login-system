@@ -37,7 +37,7 @@ import { Icons } from "@/components/icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { loginSchema } from "../schemas/login";
 type Input = z.infer<typeof loginSchema>;
 
@@ -136,11 +136,25 @@ export default function LogInPage() {
 						<CardFooter className='flex flex-col'>
 							<p className='text-sm mb-2'>OR</p>
 							<div className='grid grid-cols-2 gap-4 mb-2'>
-								<Button variant='outline'>
+								<Button
+									variant='outline'
+									onClick={() =>
+										signIn("google", { callbackUrl: "/dashboard" }).catch(
+											console.error
+										)
+									}
+								>
 									<Icons.google className='mr-2 h-4 w-4' />
 									Google
 								</Button>
-								<Button variant='outline'>
+								<Button
+									variant='outline'
+									onClick={() =>
+										signIn("github", { callbackUrl: "/dashboard" }).catch(
+											console.error
+										)
+									}
+								>
 									<Icons.gitHub className='mr-2 h-4 w-4' />
 									Github
 								</Button>

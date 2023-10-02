@@ -14,14 +14,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Hand } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type Props = {};
 
 const OnboardingOption1 = (props: Props) => {
 	const { data: session } = useSession();
+	const router = useRouter();
 
-	const handleOnboarding = async () => {};
+	const handleOnboarding = async () => {
+		//CAN PUT IN LOGIC TO SAVE OPTIONS TO USER IN DATABASE THEN CHANGE ONBOARDED TO TRUE
+		router.push("/onboarding/2");
+	};
 	return (
 		<div className='flex justify-center items-center h-screen '>
 			<Card className='max-w-full w-3/4'>
@@ -34,7 +39,7 @@ const OnboardingOption1 = (props: Props) => {
 							width={160}
 							className='mb-6'
 						/>
-						<CardTitle>Welcome! {session?.user.email}</CardTitle>
+						<CardTitle>Welcome! {session?.user.firstName}</CardTitle>
 					</div>
 
 					<div className='flex flex-row justify-center'>
