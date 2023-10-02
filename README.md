@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Login System
 
-## Getting Started
+This is a simple login system project built with React, Node.js, and MongoDB. It allows users to sign in with their email and password or use OAuth with GitHub or Google. Upon the initial login, users go through an onboarding process, and their selections are saved to the database. The project utilizes Redis for cache management alongside MongoDB for storing user information.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **User Authentication:** Users can log in using their email and password or via OAuth with GitHub or Google.
+- **Onboarding Process:** Upon the initial login, users are guided through an onboarding process.
+- **Data Persistence:** User selections made during onboarding are saved to the database.
+- **Dashboard:** After successful authentication and onboarding, users are redirected to their dashboard.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Libraries Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- [React Hook Form](https://react-hook-form.com/): Used for creating forms with React.
+- [Zod](https://github.com/colinhacks/zod): A TypeScript-first schema validation library.
+- [Shadcn](https://github.com/shadcn/shadcn): A UI library for creating sleek and modern user interfaces.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+To run the project locally, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository to your local machine:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   git clone https://github.com/your-username/login-system.git
+   ```
