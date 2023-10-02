@@ -1,13 +1,21 @@
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 import { getServerSession, type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+const prisma = new PrismaClient();
 
 export const options: NextAuthOptions = {
 	providers: [
 		GitHubProvider({
 			clientId: process.env.GITHUB_CLIENT_ID as string,
 			clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+		}),
+		GoogleProvider({
+			clientId: process.env.GOOGLE_CLIENT_ID as string,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
 		}),
 		CredentialsProvider({
 			name: "Credentials",
@@ -22,29 +30,55 @@ export const options: NextAuthOptions = {
 					type: "password",
 				},
 			},
-			async authorize(credentials, req) {
-				//FIND USER IN DATABASE AND COMPARE PASS WITH BCRYPT
-				//HARD CODE FOR NOW
-				const user = {
-					id: "7",
-					emailId: "kai@gmail.com",
-					password: "nextauth",
-				};
-				if (
-					credentials?.emailId === user.emailId &&
-					credentials?.password === user.password
-				) {
-					return user;
-				} else {
+			async authorize(credentials) {
+				//CHECKING FIELDS TO SEE IF VALID
+				const user = await prisma.user.findUnique({
+					where: {
+						email: credentials?.emailId,
+					},
+				});
+
+				if (!user) {
 					return null;
 				}
+
+				//CHECKING PASSWORD
+				const passwordsMatch = await bcrypt.compare(
+					credentials?.password,
+					user.hashedPassword
+				);
+
+				if (!passwordsMatch) {
+					return null;
+				}
+				return user;
 			},
 		}),
 	],
 	//SETTING CUSTOM PAGES FOR ONBOARDING AND LOGIN FOR PROTECTED ROUTES
 	pages: {
 		signIn: "/login",
-		newUser: "/onboarding",
+		// newUser: "/onboarding",
+	},
+	secret: process.env.NEXTAUTH_SECRET,
+	callbacks: {
+		async jwt({ token, user, session }) {
+			console.log({ token, user, session });
+
+			if (user) {
+				return {
+					...token,
+					onboarded: user.onboarded,
+					firstName: user.firstName,
+				};
+			}
+			return token;
+		},
+		async session({ session, token, user }) {
+			console.log({ session, token, user });
+
+			return session;
+		},
 	},
 };
 

@@ -35,14 +35,29 @@ import * as z from "zod";
 
 import { Icons } from "@/components/icons";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { loginSchema } from "../schemas/login";
+type Input = z.infer<typeof loginSchema>;
 
 export default function LogInPage() {
-	const form = useForm();
+	const router = useRouter();
+
+	const form = useForm<Input>({
+		resolver: zodResolver(loginSchema),
+	});
 	function onSubmit(values) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
 		console.log(values);
+
+		// e.preventDefault();
+		signIn("credentials", {
+			...values,
+			redirect: false,
+		});
+		router.push("/dashboard");
 	}
 
 	return (
@@ -98,7 +113,11 @@ export default function LogInPage() {
 											<FormItem>
 												{/* <FormLabel>Username</FormLabel> */}
 												<FormControl>
-													<Input placeholder='Password' {...field} />
+													<Input
+														placeholder='Password'
+														{...field}
+														type='password'
+													/>
 												</FormControl>
 												{/* <FormDescription>
 												This is your public display name.

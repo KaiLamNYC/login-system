@@ -30,13 +30,33 @@ import * as z from "zod";
 import { Icons } from "@/components/icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { registerSchema } from "../schemas/register";
+
+type Input = z.infer<typeof registerSchema>;
 
 export default function SignUpPage() {
-	const form = useForm();
-	function onSubmit(values) {
+	const router = useRouter();
+
+	// const form = useForm();
+	const form = useForm<Input>({
+		resolver: zodResolver(registerSchema),
+	});
+	async function onSubmit(values: Input) {
 		// Do something with the form values.
 		// ✅ This will be type-safe and validated.
 		console.log(values);
+
+		const response = await fetch("/api/register", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(values),
+		});
+		const userInfo = await response;
+		console.log(userInfo);
+		router.push("/login");
 	}
 
 	return (
@@ -124,7 +144,11 @@ export default function SignUpPage() {
 											<FormItem>
 												{/* <FormLabel>Username</FormLabel> */}
 												<FormControl>
-													<Input placeholder='Password' {...field} />
+													<Input
+														placeholder='Password'
+														{...field}
+														type='password'
+													/>
 												</FormControl>
 												{/* <FormDescription>
 												This is your public display name.
@@ -140,7 +164,11 @@ export default function SignUpPage() {
 											<FormItem>
 												{/* <FormLabel>Username</FormLabel> */}
 												<FormControl>
-													<Input placeholder='Confirm Password' {...field} />
+													<Input
+														placeholder='Confirm Password'
+														{...field}
+														type='password'
+													/>
 												</FormControl>
 												{/* <FormDescription>
 												This is your public display name.
