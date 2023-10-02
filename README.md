@@ -53,3 +53,4 @@ To run the project locally, follow these steps:
 - **Redis:** Redis can be used along with MongoDB with cache aside to store any relevant data as the application scales.
 - **Confirm Password:** One more issue that can be resolved is the confirm password field validation using zod refine method to make sure the passwords are actually the same.
 - **User Model:** The User model has an onboarding boolean value that can be toggled to true after completing the onboarding process in the real application.
+- **Middleware:** Routes are protexted by Next.js Middleware
