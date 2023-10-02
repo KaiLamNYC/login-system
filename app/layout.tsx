@@ -12,14 +12,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
 	children,
-	session,
 }: {
 	children: React.ReactNode;
-	session: any;
 }) {
 	return (
 		<html lang='en'>
-			<Providers session={session}>
+			<Providers>
 				<body className={inter.className}>{children}</body>
 			</Providers>
 		</html>
