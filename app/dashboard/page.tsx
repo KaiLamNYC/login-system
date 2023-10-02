@@ -39,7 +39,11 @@ const DashboardPage = (props: Props) => {
 
 					<p>Service Board</p>
 					<Button
-						onClick={() => signOut({ callbackUrl: "http://localhost:3000/" })}
+						onClick={() =>
+							signOut({
+								callbackUrl: "https://login-system-kailamnyc.vercel.app/",
+							})
+						}
 					>
 						Sign Out
 					</Button>
