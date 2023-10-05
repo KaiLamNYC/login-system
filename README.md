@@ -54,3 +54,8 @@ To run the project locally, follow these steps:
 - **Confirm Password:** One more issue that can be resolved is the confirm password field validation using zod refine method to make sure the passwords are actually the same.
 - **User Model:** The User model has an onboarding boolean value that can be toggled to true after completing the onboarding process in the real application.
 - **Middleware:** Routes are protexted by Next.js Middleware
+
+## Things I Learned
+
+- **User Authentication** While I've used NextAuth in previous full-stack projects, this assignment allowed me to dive deeper into its capabilities. I explored various options NextAuth provides and gained a better understanding of how to handle the User Authentication Flow, especially when it comes to logging in with credentials, a feature I hadn't used extensively before. This experience expanded my knowledge of user authentication and security practices in web development.
+
